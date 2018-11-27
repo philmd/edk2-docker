@@ -1,0 +1,14 @@
+language: c
+build:
+  pre_ci:
+    - git clone https://github.com/tianocore/edk2.git
+    - git clone https://github.com/tianocore/edk2-platforms.git
+    - git clone https://github.com/openssl/openssl edk2/CryptoPkg/Library/OpensslLib/openssl
+  pre_ci_boot:
+    image_name: philmd/edk2-docker
+    image_tag: arm
+    pull: true
+  ci:
+    - . edksetup.sh
+    - make -C BaseTools
+    - GCC5_AARCH64_PREFIX=aarch64-linux-gnu- build -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
