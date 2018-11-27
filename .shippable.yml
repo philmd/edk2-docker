@@ -6,7 +6,7 @@ build:
     - git clone https://github.com/openssl/openssl edk2/CryptoPkg/Library/OpensslLib/openssl
   pre_ci_boot:
     image_name: philmd/edk2-docker
-    image_tag: arm
+    image_tag: aarch64_builds
     pull: true
   ci:
     - . edksetup.sh
